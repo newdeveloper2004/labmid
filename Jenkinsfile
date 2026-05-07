@@ -2,21 +2,14 @@ pipeline {
     agent any
 
     environment {
-        GITHUB_REPO = 'https://github.com/newdeveloper2004/labmid.git'
         CONTAINER_NAME = 'ml-pipeline-api'
     }
 
     triggers {
-        pollSCM('* * * * *')   // polls every minute, or use GitHub webhook
+        pollSCM('* * * * *')
     }
 
     stages {
-
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: "https://github.com/newdeveloper2004/labmid/"
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
@@ -26,9 +19,7 @@ pipeline {
 
         stage('Stop Old Container') {
             steps {
-                sh '''
-                    docker compose down || true
-                '''
+                sh 'docker compose down || true'
             }
         }
 
