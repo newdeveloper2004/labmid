@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GITHUB_REPO = 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
+        GITHUB_REPO = 'https://github.com/newdeveloper2004/labmid.git'
         CONTAINER_NAME = 'ml-pipeline-api'
     }
 
@@ -14,7 +14,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: "${GITHUB_REPO}"
+                git branch: 'main', url: "https://github.com/newdeveloper2004/labmid/"
             }
         }
 
